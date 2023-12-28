@@ -1,4 +1,4 @@
-# importINEGI
+# tidyINEGI
 
 `tidyINEGI` is an open-source R package that allows users to
 programatically load analysis-ready [INEGI](https://www.inegi.org.mx/)
@@ -11,3 +11,9 @@ Why analysis-ready? Frequent users of INEGI data sets ought to know how
 painful it is to get from raw data into workable data. This package aims
 to bridge that gap, providing transparent documentation and inviting
 users to contribute.
+
+## Development
+
+`tidyINEGI` is at an early stage of development. Current work is focused
+on [ENIGH](https://www.inegi.org.mx/programas/enigh/nc/2022/). No
+development version is available just yet.

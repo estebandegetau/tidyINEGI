@@ -1,5 +1,5 @@
 ---
-title: "importINEGI"
+title: "tidyINEGI"
 format: gfm
 ---
 
@@ -8,3 +8,8 @@ format: gfm
 Why tidy? Other packages are not user friendly and are not collaborative, they are not alive.
 
 Why analysis-ready? Frequent users of INEGI data sets ought to know how painful it is to get from raw data into workable data. This package aims to bridge that gap, providing transparent documentation and inviting users to contribute. 
+
+
+## Development
+
+`tidyINEGI` is at an early stage of development. Current work is focused on [ENIGH](https://www.inegi.org.mx/programas/enigh/nc/2022/). No development version is available just yet. 
