@@ -1,13 +1,13 @@
-# tidyINEGI
+# tidyinegi
 
-`tidyINEGI` is an open-source R package that allows users to
+`tidyinegi` is an open-source R package that allows users to
 programatically load analysis-ready [INEGI](https://www.inegi.org.mx/)
 data sets into R and in other formats (.dta, .xlsx).
 
 Why tidy? While other packages such as
 [`importINEGI`](https://github.com/crenteriam/importinegi) and
 [`inegiR`](https://github.com/Eflores89/inegiR) provide similar
-functionality, `tidyINEGI` is built on top of the `tidyverse` and
+functionality, `tidyinegi` is built on top of the `tidyverse` and
 `tidyselect` packages, which allows for a more consistent and intuitive
 user experience.
 
@@ -19,6 +19,6 @@ sets into R.
 
 ## Development
 
-`tidyINEGI` is at an early stage of development. Current work is focused
+`tidyinegi` is at an early stage of development. Current work is focused
 on [ENIGH](https://www.inegi.org.mx/programas/enigh/nc/2022/). No
 development version is available just yet.

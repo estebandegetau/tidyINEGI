@@ -1,4 +1,4 @@
-Package: tidyINEGI
+Package: tidyinegi
 Type: Package
 Title: Access Analysis-Ready Data From [INEGI]("https://www.inegi.org.mx/")
 Version: 0.1.0
@@ -10,3 +10,6 @@ Description: An open-source R package that allows users to programatically load 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
