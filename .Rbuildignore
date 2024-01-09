@@ -3,3 +3,4 @@
 ^LICENSE\.md$
 ^\.pdf$
 ^data.raw$
+^\.csv$
