@@ -3,6 +3,5 @@
 .RData
 .Ruserdata
 -IMSS-EDS.Rhistory
-.zip
 .csv
 data-raw/enigh/01_raw/02_unzip/*
