@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(tidyINEGI)
+library(tidyinegi)
 
-test_check("tidyINEGI")
+test_check("tidyinegi")

@@ -19,14 +19,18 @@ Authors@R:
            comment = c(ORCID = "0009-0004-4095-8819"))
 RoxygenNote: 7.2.3
 Imports: 
-    cli,
     dplyr,
     glue,
     here,
     lifecycle,
+    purrr,
+    readr,
     rlang,
+    rvest,
+    stringr,
+    tibble,
     tidyr,
-    withr
+    tidyselect
 URL: https://github.com/estebandegetau/tidyinegi
 BugReports: https://github.com/estebandegetau/tidyinegi/issues
 Depends: R (>= 4.1.0)
