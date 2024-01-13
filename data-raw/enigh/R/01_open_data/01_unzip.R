@@ -28,9 +28,9 @@ year <- .year |> as.character()
 
 file <- paste0(year, ".zip")
 
-path <- here::here("data-raw", "enigh", "01_raw", "01_zip",  file)
+path <- here::here("data-raw", "enigh", "data", "01_zip",  file)
 
 unzip(
   path,
-  exdir = here::here("data-raw", "enigh", "01_raw", "02_unzip", year)
+  exdir = here::here("data-raw", "enigh", "data", "02_open", year)
   )

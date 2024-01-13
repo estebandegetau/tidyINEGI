@@ -3,4 +3,5 @@
 .RData
 .Ruserdata
 .csv
-data-raw/enigh/01_raw/02_unzip/*
+data-raw/enigh/data/02_open/*
+data-raw/enigh/data/99_meta/*

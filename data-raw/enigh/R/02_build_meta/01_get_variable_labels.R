@@ -17,36 +17,35 @@ gc()
 
 #---- Libraries ----------------------------------------------------------------
 
-pacman::p_load(here, tidyverse, tidyinegi)
+pacman::p_load(here, tidyverse, devtools)
+
+load_all()
 
 #---- Load data sets -----------------------------------------------------------
 
 year <- .year |> as.character()
 
-data_sets <- tibble(
-  path = here::here(
-    "data-raw",
-    "enigh",
-    "01_raw",
-    "02_unzip",
-    year
-  ) |> list.dirs(full.names = TRUE, recursive = F),
-  data_set = str_extract(path, "[^/]+$")
-
-)
+data_sets <- list_data_sets(year)
 
 #---- Get variable labels ------------------------------------------------------
 
-data_set_labels <- data_sets |>
+enigh_var_labels <- data_sets |>
   mutate(
-    labels = map(data_set, get_enigh_var_labels)
-  )
+    var_labs = map(data_set, get_enigh_var_labels)
+  ) |>
+  select(data_set, var_labs)
+
 
 #---- Save ---------------------------------------------------------------------
 
-
-data_set_labels |>
-  select(path, labels) |>
-  pmap(
-    ~ write_csv(.y, here::here(.x, "var_labels.csv")
-  ))
+save(
+  enigh_var_labels,
+  file = here::here(
+    "data-raw",
+    "enigh",
+    "data",
+    "99_meta",
+    year,
+    "enigh_var_labels.RData"
+  )
+)

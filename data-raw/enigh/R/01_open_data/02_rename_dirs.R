@@ -20,7 +20,9 @@ gc()
 
 #---- Libraries ----------------------------------------------------------------
 
-pacman::p_load(here, tidyverse)
+pacman::p_load(here, tidyverse, devtools)
+
+load_all()
 
 #---- Rename directories -------------------------------------------------------
 
@@ -29,8 +31,8 @@ year <- .year |> as.character()
 path <- here::here(
   "data-raw",
   "enigh",
-  "01_raw",
-  "02_unzip",
+  "data",
+  "02_open",
   year
   )
 
@@ -38,15 +40,7 @@ dirs <- tibble(
   raw = list.files(path, full.names = F)
 ) |>
   mutate(
-    clean = str_remove(raw, "conjunto_de_datos_") |>
-      str_remove("_ns") |>
-      str_remove_all("\\d") |>
-      str_remove("_enigh") |>
-      str_remove("_$"),
-    clean = case_when(
-      str_detect(clean, "indice") ~ "indice.csv",
-      T ~ clean
-      )
+    clean = clean_dataset_names(raw)
     )
 
 # Rename directories
@@ -57,8 +51,8 @@ dirs |>
     ) |>
   pwalk(
     ~ file.rename(
-      from = here::here("data-raw", "enigh", "01_raw", "02_unzip", year, ..1),
-      to = here::here("data-raw", "enigh", "01_raw", "02_unzip", year, ..2)
+      from = here::here(path, ..1),
+      to = here::here(path, ..2)
       )
     )
 

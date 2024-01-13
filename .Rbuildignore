@@ -2,5 +2,6 @@
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^\.pdf$
-^data.raw$
+^data-raw$
 ^\.csv$
+^README\.qmd$

@@ -26,6 +26,8 @@ pacman::p_load(here, tidyverse, tidyinegi, labelled)
 
 set_enigh_var_labels <- function(data, data_name, year) {
 
+  load(here::here("R", "sysdata.rda"))
+
   labels <- read_csv(
     here::here(
       "data-raw",
@@ -129,6 +131,36 @@ handle_dichotomic <- function(data) {
 
    }
 
+
+is_single_value <- function(vector) {
+
+  if(class(vector) == "factor") return(FALSE)
+
+  uniq_vals <- vector |>
+    na.omit() |>
+    unique() |>
+    length()
+
+  return(uniq_vals == 1)
+
+}
+
+
+
+handle_single_values <- function(data) {
+
+  data |>
+    dplyr::mutate(
+      dplyr::across(
+        tidyselect::where(is_single_value),
+        ~ dplyr::case_when(
+          !is.na(.x) ~ T
+        )
+      )
+    )
+
+}
+
 is_numeric <- function(vector) {
 
   if(class(vector) == "factor") return(FALSE)
@@ -147,6 +179,18 @@ is_numeric <- function(vector) {
     length()
 
   return(max_vec > 10 & vec_length > 4)
+
+}
+
+handle_numeric <- function(data) {
+
+  data |>
+    dplyr::mutate(
+      dplyr::across(
+        tidyselect::where(is_numeric) & !tidyselect::matches("folio|numren|_hog|_id"),
+        as.numeric
+      )
+    )
 
 }
 
@@ -172,10 +216,19 @@ data_set <- "poblacion"
 
 raw <- read_enigh_raw(data_set, year)
 
+
+with_factor_labels <- raw |>
+  set_enigh_factor_labels(data_set, year)
+
 labelled <- raw |>
   set_enigh_factor_labels(data_set, year) |>
   handle_dichotomic() |>
+  handle_single_values() |>
+  handle_numeric() |>
   set_enigh_var_labels(data_set, year)
+
+
+
 
 
 raw |>

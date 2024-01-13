@@ -1,7 +1,10 @@
 ---
 title: "tidyinegi"
 format: gfm
+output-file: README.md
 ---
+
+
 
 `tidyinegi` is an open-source R package that allows users to programatically load analysis-ready [INEGI](https://www.inegi.org.mx/) data sets into R and in other formats (.dta, .xlsx). 
 

@@ -22,6 +22,7 @@ Imports:
     dplyr,
     glue,
     here,
+    knitr,
     lifecycle,
     purrr,
     readr,
@@ -30,7 +31,8 @@ Imports:
     stringr,
     tibble,
     tidyr,
-    tidyselect
+    tidyselect,
+    withr
 URL: https://github.com/estebandegetau/tidyinegi
 BugReports: https://github.com/estebandegetau/tidyinegi/issues
 Depends: R (>= 4.1.0)

@@ -10,6 +10,8 @@
 #' get_enigh_var_labels("viviendas")
 #' get_enigh_var_labels("hogares")
 get_enigh_var_labels <- function(data_set) {
+
+
   url <- "https://www.inegi.org.mx/rnm/index.php/catalog/901/data-dictionary/"
 
   page <- rvest::read_html(url)
