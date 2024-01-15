@@ -32,6 +32,9 @@ pacman::p_load(here)
 ._02_get_val_labs     <- 0
 ._03_build_metadata   <- 0
 
+# Clean
+._01_set_labels       <- 0
+
 #---- Run ----------------------------------------------------------------------
 
 # 1. Open data -----------------------------------------------------------------
@@ -94,4 +97,13 @@ if (._03_build_metadata) {
   )
 }
 
+# 3. Clean ---------------------------------------------------------------------
+
+# 3.1 Set labels
+if (._01_set_labels) {
+  source(
+    here::here("data-raw", "enigh", "R", "03_clean", "01_set_labels.R"),
+    encoding = "UTF-8"
+  )
+}
 

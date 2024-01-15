@@ -72,17 +72,16 @@ enigh_metadata <- data_sets |>
 
 #---- Save ---------------------------------------------------------------------
 
-assign(str_c("enigh_metadata_", year), enigh_metadata)
 
 save(
-  list = str_c("enigh_metadata_", year),
+  enigh_metadata,
   file = here(
     "data-raw",
     "enigh",
     "data",
     "99_meta",
     year,
-    str_c("enigh_metadata_", year, ".RData")
+    "enigh_metadata.RData"
   )
 )
 

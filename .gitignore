@@ -5,3 +5,4 @@
 .csv
 data-raw/enigh/data/02_open/*
 data-raw/enigh/data/99_meta/*
+data-raw/enigh/data/03_pre_clean/*
