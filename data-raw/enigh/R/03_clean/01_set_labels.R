@@ -38,16 +38,15 @@ load(here::here(
 
 #---- Functions ----------------------------------------------------------------
 
-
 read_data_set <- function(data_set, ...) {
 
   path <- here::here("data-raw",
-               "enigh",
-               "data",
-               "02_open",
-               year,
-               data_set,
-               "conjunto_de_datos")
+                     "enigh",
+                     "data",
+                     "02_open",
+                     year,
+                     data_set,
+                     "conjunto_de_datos")
 
   file <- list.files(path, full.names = T)
 
@@ -56,16 +55,31 @@ read_data_set <- function(data_set, ...) {
 }
 
 
-set_value_labels <- function(data, data_set) {
+#' Set value labels to ENIGH data sets
+#'
+#' @param data A tibble including one data set from ENIGH
+#' @param data_set The name of said data set. Must match one of https://www.inegi.org.mx/rnm/index.php/catalog/685
+#'
+#' @return A tibble whose matching factor variables have been labeled.
+set_enigh_val_labels <- function(data, data_set) {
 
   ds_i <- data_set
 
+  #' An error occours in "gastoshogar" where documented value labels are "1",
+  #' "2", ... but in the data set "01", "02".
+  if(ds_i == "gastoshogar") {
+
+    raw <- raw |>
+      mutate(orga_inst = orga_inst |> as.numeric() |> as.character())
+
+  }
+
   labels <- enigh_metadata |>
-    select(data_set, value_labs) |>
-    filter(data_set == ds_i) |>
-    unnest(value_labs) |>
-    select(!data_set) |>
-    unnest(value_labels)
+    dplyr::select(data_set, value_labs) |>
+    dplyr::filter(data_set == ds_i) |>
+    tidyr::unnest(value_labs) |>
+    dplyr::select(!data_set) |>
+    tidyr::unnest(value_labels)
 
 
   # Recode as factors
@@ -110,13 +124,18 @@ set_enigh_var_labels <- function(data, data_set) {
 
 is_dichotomic <- function(vector) {
 
-  vec_length <- vector |>
+  if (class(vector) == "factor") {return(FALSE)}
+
+  vec_uniq <- vector |>
     # Remove NA's
     na.omit() |>
     unique() |>
-    length()
+    sort()
 
-  return(vec_length == 2)
+  if (length(vec_uniq) > 2) {return(FALSE)}
+
+
+  return(sum(vec_uniq == c("1", "2"), na.rm = T) == 2)
 
 }
 
@@ -130,7 +149,7 @@ handle_dichotomic <- function(data) {
       )
     )
 
-   }
+}
 
 
 is_single_value <- function(vector) {
@@ -204,12 +223,12 @@ handle_numeric <- function(data) {
 #---- Set labels ---------------------------------------------------------------
 
 
-for (data_set in data_sets$data_set) {
+for (data_set in enigh_metadata$data_set) {
 
   raw <- read_data_set(data_set)
 
   pre_clean <- raw |>
-    set_value_labels(data_set) |>
+    set_enigh_val_labels(data_set) |>
     handle_dichotomic() |>
     handle_single_values() |>
     handle_numeric() |>

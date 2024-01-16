@@ -21,19 +21,21 @@ pacman::p_load(here)
 
 #---- Setup --------------------------------------------------------------------
 
-.year <- 2022
+.year <- 2020
 
 # Open data
 ._01_unzip            <- 1
 ._02_rename_dirs      <- 1
 
 # Build meta data
-._01_get_var_labs     <- 0
-._02_get_val_labs     <- 0
-._03_build_metadata   <- 0
+._01_get_var_labs     <- 1
+._02_get_val_labs     <- 1
+._03_build_metadata   <- 1
 
 # Clean
-._01_set_labels       <- 0
+._01_set_labels       <- 1
+._02_check_data_sets  <- 1
+._03_use_data         <- 1
 
 #---- Run ----------------------------------------------------------------------
 
@@ -107,3 +109,18 @@ if (._01_set_labels) {
   )
 }
 
+# 3.2 Check data sets
+if (._02_check_data_sets) {
+  source(
+    here::here("data-raw", "enigh", "R", "03_clean", "02_check_data_sets.R"),
+    encoding = "UTF-8"
+  )
+}
+
+# 3.3 Use data
+if (._03_use_data) {
+  source(
+    here::here("data-raw", "enigh", "R", "03_clean", "03_use_data.R"),
+    encoding = "UTF-8"
+  )
+}

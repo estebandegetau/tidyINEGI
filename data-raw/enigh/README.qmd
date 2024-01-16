@@ -1,0 +1,7 @@
+---
+title: "ENIGH"
+format: gfm
+editor: visual
+---
+
+## [ENIGH](https://www.inegi.org.mx/programas/enigh/nc/2022/)
