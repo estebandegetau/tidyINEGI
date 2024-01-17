@@ -15,5 +15,5 @@ raw_inegi_data(url, output_dir = "data")
 A character string with the path to the directory where the data was saved.
 }
 \description{
-Download and unzip data from INEGI
+Helper function to clean ENIGH data.
 }

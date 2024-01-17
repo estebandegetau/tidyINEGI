@@ -13,5 +13,5 @@ list_data_sets(year)
 A tibble with the path and name of each data set.
 }
 \description{
-List ENIGH data sets within a year
+Helper function to clean ENIGH data.
 }

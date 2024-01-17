@@ -12,8 +12,6 @@
 #'   inegi_menu()
 inegi_menu <- function(.quiet = FALSE) {
 
-  invisible(data_menu)
-
-  if(!.quiet) {knitr::kable(data_menu, format = "rst")} #else{return(data_menu)}
+  if(!.quiet) {knitr::kable(tidyinegi::data_menu, format = "rst")}
 
 }

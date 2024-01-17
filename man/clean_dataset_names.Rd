@@ -13,5 +13,5 @@ clean_dataset_names(vector)
 A vector of clean file names.
 }
 \description{
-Clean file names of ENIGH data sets
+Helper function to clean ENIGH data.
 }

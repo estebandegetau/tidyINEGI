@@ -15,5 +15,5 @@ read_inegi_csv(path, ...)
 A tibble.
 }
 \description{
-Read an ENIGH csv file
+Helper function to clean ENIGH data.
 }
