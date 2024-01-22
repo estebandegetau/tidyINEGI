@@ -5,3 +5,5 @@
 ^data-raw$
 ^\.csv$
 ^README\.qmd$
+^\.github$
+^README\.Rmd$
