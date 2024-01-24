@@ -67,22 +67,28 @@ get_enigh_var_labels <- function(data_set) {
 #' year <- "2022"
 #' data_set <- "poblacion"
 #' read_enigh_raw(data_set, year)
-read_enigh_raw <- function(data_set, year) {
-  path <- here::here("data-raw",
-                     "enigh",
-                     "01_raw",
-                     "02_unzip",
-                     year,
-                     data_set,
-                     "conjunto_de_datos")
-
-  file <- list.files(path, full.names = TRUE)
-
-  raw <- readr::read_csv(file, col_types = readr::cols(.default = "c"))
-
-  return(raw)
-
-}
+# read_enigh_raw <- function(data_set, year) {
+#   path <- here::here("data-raw",
+#                      "enigh",
+#                      "data",
+#                      "02_open",
+#                      year,
+#                      data_set,
+#                      "conjunto_de_datos")
+#
+#   file <- list.files(path, full.names = TRUE)
+#
+#   if(length(file) > 1) {
+#
+#     file <- file[which(stringr::str_detect("conjunto_"))]
+#
+#   }
+#
+#   raw <- readr::read_csv(file, col_types = readr::cols(.default = "c"))
+#
+#   return(raw)
+#
+# }
 
 
 

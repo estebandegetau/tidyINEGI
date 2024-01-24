@@ -4,12 +4,14 @@
 \alias{read_inegi_csv}
 \title{Read an ENIGH csv file}
 \usage{
-read_inegi_csv(path, ...)
+read_inegi_csv(path, delim = ",", ...)
 }
 \arguments{
 \item{path}{The path to the csv file.}
 
-\item{...}{Additional arguments passed to \code{read_csv()}.}
+\item{delim}{Passed to \code{\link[readr:read_delim]{readr::read_delim()}}.}
+
+\item{...}{Additional arguments passed to \code{\link[readr:read_delim]{readr::read_delim()}}.}
 }
 \value{
 A tibble.

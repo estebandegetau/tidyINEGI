@@ -35,19 +35,22 @@ list_data_sets <- function(year) {
 #' before reading.
 #'
 #' @param path The path to the csv file.
-#' @param ... Additional arguments passed to `read_csv()`.
+#' @param delim Passed to [readr::read_delim()].
+#' @param ... Additional arguments passed to [readr::read_delim()].
+#'
 #' @export
 #'
 #' @return A tibble.
-read_inegi_csv <- function(path, ...) {
+read_inegi_csv <- function(path, delim = ",", ...) {
 
   encoding <- readr::guess_encoding(path) |>
     dplyr::pull(encoding) |>
     dplyr::first()
 
-  readr::read_csv(path,
+  readr::read_delim(path,
                   col_types = readr::cols(.default = "c"),
                   locale = readr::locale(encoding = encoding),
+                  delim = delim,
                   ...
   ) |>
     tibble::as_tibble()
