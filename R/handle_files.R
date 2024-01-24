@@ -31,7 +31,8 @@ list_data_sets <- function(year) {
 #' Read an ENIGH csv file
 #'
 #' @description
-#' Helper function to clean ENIGH data.
+#' Helper function to clean ENIGH data. Guesses encoding of the `.csv` file
+#' before reading.
 #'
 #' @param path The path to the csv file.
 #' @param ... Additional arguments passed to `read_csv()`.
@@ -39,9 +40,14 @@ list_data_sets <- function(year) {
 #'
 #' @return A tibble.
 read_inegi_csv <- function(path, ...) {
+
+  encoding <- readr::guess_encoding(path) |>
+    dplyr::pull(encoding) |>
+    dplyr::first()
+
   readr::read_csv(path,
                   col_types = readr::cols(.default = "c"),
-                  locale = readr::locale(encoding = "latin1"),
+                  locale = readr::locale(encoding = encoding),
                   ...
   ) |>
     tibble::as_tibble()
