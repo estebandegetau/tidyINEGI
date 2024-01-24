@@ -1,3 +1,5 @@
+# tidyinegi 0.3.1
+
 # tidyinegi 0.3.0
 
 # tidyinegi 0.2.0
