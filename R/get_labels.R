@@ -1,6 +1,6 @@
 #' Get variable labels for ENIGH data sets
 #'
-#' @param data_set Name of the data set to get the labels from. The name must
+#' @param data_set Name of the data set to get the labels from. Must
 #'  match the name of the data set in the [INEGI website](https://www.inegi.org.mx/rnm/index.php/catalog/901/data-dictionary/).
 #'
 #' @return A tibble with the variable names and labels
@@ -53,42 +53,6 @@ get_enigh_var_labels <- function(data_set) {
   return(labels)
 }
 
-
-#' Read raw ENIGH data sets
-#'
-#' @param year ENIGH year. Defaults to the value of the global.
-#' @param data_set Name of the data set to read. The name must match the name of
-#'       the data set in the [INEGI website](https://www.inegi.org.mx/rnm/index.php/catalog/901/data-dictionary/).
-#'
-#' @return A tibble with the raw data set
-#' @export
-#'
-#' @examples
-#' year <- "2022"
-#' data_set <- "poblacion"
-#' read_enigh_raw(data_set, year)
-# read_enigh_raw <- function(data_set, year) {
-#   path <- here::here("data-raw",
-#                      "enigh",
-#                      "data",
-#                      "02_open",
-#                      year,
-#                      data_set,
-#                      "conjunto_de_datos")
-#
-#   file <- list.files(path, full.names = TRUE)
-#
-#   if(length(file) > 1) {
-#
-#     file <- file[which(stringr::str_detect("conjunto_"))]
-#
-#   }
-#
-#   raw <- readr::read_csv(file, col_types = readr::cols(.default = "c"))
-#
-#   return(raw)
-#
-# }
 
 
 

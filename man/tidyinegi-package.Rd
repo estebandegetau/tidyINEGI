@@ -4,9 +4,9 @@
 \name{tidyinegi-package}
 \alias{tidyinegi}
 \alias{tidyinegi-package}
-\title{tidyinegi: Access Analysis-Ready Data From INEGI}
+\title{tidyinegi: Produce Analysis-Ready Data From INEGI}
 \description{
-An open-source R package that allows users to programatically load analysis-ready [INEGI]("https://www.inegi.org.mx/") data sets into R and in other formats (.dta, .xlsx). Why analysis-ready? Frequent users of INEGI data sets ought to know how painful it is to get from raw data into workable data. This package aims to bridge that gap, providing transparent documentation and inviting users to contribute.
+Helper functions to clean data shipped in [tidyenigh](https://github.com/estebandegetau/tidyenigh).
 }
 \seealso{
 Useful links:
