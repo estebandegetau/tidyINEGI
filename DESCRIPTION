@@ -1,7 +1,7 @@
 Package: tidyinegi
 Type: Package
 Title: Produce Analysis-Ready Data From INEGI
-Version: 0.3.1
+Version: 0.3.1.9000
 Description: Helper functions to clean data shipped in 
              [tidyenigh](https://github.com/estebandegetau/tidyenigh).
 License: file LICENSE
