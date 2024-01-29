@@ -4,10 +4,14 @@
 \alias{handle_numeric}
 \title{Turn ENIGH numeric variables into numeric class}
 \usage{
-handle_numeric(data)
+handle_numeric(data, data_set, year)
 }
 \arguments{
-\item{data}{An ENIGH data set in tibble format.}
+\item{data}{An ENIGH data set}
+
+\item{data_set}{The name of the ENIGH data set}
+
+\item{year}{Year of ENIGH survey}
 }
 \value{
 An ENIGH data set with numeric classes
