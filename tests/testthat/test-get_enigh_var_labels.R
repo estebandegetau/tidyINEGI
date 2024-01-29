@@ -1,3 +1,3 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+test_that("scrapper works", {
+  expect_equal(get_enigh_var_labels("poblacion") |> nrow(), 188)
 })

@@ -14,13 +14,14 @@ Config/testthat/edition: 3
 Authors@R: 
     person("Esteban", "Degetau", , "estebandegetau@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0009-0004-4095-8819"))
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 Imports: 
     dplyr,
     glue,
     here,
     knitr,
     lifecycle,
+    methods,
     purrr,
     readr,
     rlang,
@@ -28,6 +29,7 @@ Imports:
     stats,
     stringr,
     tibble,
+    tidyr,
     tidyselect,
     utils,
     withr

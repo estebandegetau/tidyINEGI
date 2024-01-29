@@ -7,12 +7,10 @@
 #' @export
 #'
 #' @examples
-#' get_enigh_var_labels("viviendas")
-#' get_enigh_var_labels("hogares")
+#' get_enigh_var_labels("poblacion") |> head()
 get_enigh_var_labels <- function(data_set) {
-
-
-  url <- "https://www.inegi.org.mx/rnm/index.php/catalog/901/data-dictionary/"
+  url <-
+    "https://www.inegi.org.mx/rnm/index.php/catalog/901/data-dictionary/"
 
   page <- rvest::read_html(url)
 
@@ -20,7 +18,8 @@ get_enigh_var_labels <- function(data_set) {
     rvest::html_elements(".nada-list-group-item a") |>
     rvest::html_attr("href")
 
-  data_set_url <- data_set_urls[stringr::str_extract(data_set_urls, "(\\w+)$") == data_set]
+  data_set_url <-
+    data_set_urls[stringr::str_extract(data_set_urls, "(\\w+)$") == data_set]
 
   page <- rvest::read_html(data_set_url)
 
@@ -32,13 +31,13 @@ get_enigh_var_labels <- function(data_set) {
   # Variables are stored in every odd element in `a`
   vars <- a |>
     seq_along() |>
-    purrr::keep( ~ . %% 2 == 1) |>
-    purrr::map_chr( ~ a[.x])
+    purrr::keep(~ . %% 2 == 1) |>
+    purrr::map_chr(~ a[.x])
 
   labs <- a |>
     seq_along() |>
-    purrr::keep( ~ . %% 2 == 0) |>
-    purrr::map_chr( ~ a[.x])
+    purrr::keep(~ . %% 2 == 0) |>
+    purrr::map_chr(~ a[.x])
 
   labels <- tibble::tibble(var = vars,
                            label = labs) |>

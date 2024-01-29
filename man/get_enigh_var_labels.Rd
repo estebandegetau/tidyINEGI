@@ -17,6 +17,5 @@ A tibble with the variable names and labels
 Get variable labels for ENIGH data sets
 }
 \examples{
-get_enigh_var_labels("viviendas")
-get_enigh_var_labels("hogares")
+get_enigh_var_labels("poblacion") |> head()
 }

@@ -71,6 +71,7 @@ clean_dataset_names <- function(vector) {
     stringr::str_remove("_ns") |>
     stringr::str_remove_all("\\d") |>
     stringr::str_remove("_enigh") |>
+    stringr::str_remove("\\\t$") |>
     stringr::str_remove("_$")
 
   b <- dplyr::case_when(str_detect(a, "indice") ~ "indice.csv",
