@@ -7,6 +7,8 @@
 use_enigh(data, data_set, year)
 }
 \arguments{
+\item{data}{The data to be saved}
+
 \item{data_set}{The name of an ENIGH data set}
 
 \item{year}{The year of the ENIGH survey}
