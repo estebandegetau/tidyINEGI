@@ -89,7 +89,8 @@ handle_dichotomic <- function(data) {
         !tidyselect::matches("sexo|_hog|folio|numren"),
       ~ factor(
         .x,
-        labels = c("No aplica", "S\\u00ed", "No"),
+        labels = c("No aplica", "S\\u00ed", "No") |>
+          stringi::stri_unescape_unicode(),
         levels = c(0, 1, 2)
       )
     ))
