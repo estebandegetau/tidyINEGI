@@ -27,6 +27,7 @@ Imports:
     rlang,
     rvest,
     stats,
+    stringi,
     stringr,
     tibble,
     tidyr,

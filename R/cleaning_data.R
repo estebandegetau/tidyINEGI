@@ -5,7 +5,7 @@
 #' @return TRUE if `x` holds only one value, other than `NA`.
 is_single_value <- function(x) {
 
-  if(is(x, "factor")) return(FALSE)
+  if(is(x, "factor") | is(x, "numeric")) {return(FALSE)}
 
   uniq_vals <- x |>
     na.omit() |>
@@ -51,7 +51,7 @@ handle_single_values <- function(data) {
 #' is_dichotomic(c("1", "2", "3"))
 #' is_dichotomic(c("1", "2"))
 is_dichotomic <- function(x) {
-  if (is(x, "factor") | is(x, "logical")) {
+  if (is(x, "factor") | is(x, "logical") | is(x, "numeric")) {
     return(FALSE)
   }
 
@@ -89,64 +89,14 @@ handle_dichotomic <- function(data) {
         !tidyselect::matches("sexo|_hog|folio|numren"),
       ~ factor(
         .x,
-        labels = c("No aplica", "S\\u00ed", "No"),
+        labels = c("No aplica", "S\\u00ed", "No") |>
+          stringi::stri_unescape_unicode(),
         levels = c(0, 1, 2)
       )
     ))
 
 }
 
-
-
-
-#' Is an ENIGH variable numeric
-#'
-#' @inheritParams is_dichotomic
-#'
-#' @return TRUE if `x` is numeric
-is_numeric <- function(x) {
-
-  if(is(x, "factor")) {return(FALSE)}
-
-
-  as_numeric <- x |>
-    na.omit() |>
-    as.numeric()
-
-  if(any(is.na(as_numeric))) {return(FALSE)}
-
-  max_vec <- x |>
-    na.omit() |>
-    as.numeric() |>
-    max()
-
-  vec_length <- x |>
-    # Remove NA's
-    na.omit() |>
-    unique() |>
-    length()
-
-  return(max_vec > 10 | vec_length > 4)
-
-}
-
-is_numeric_quiet <- purrr::quietly(is_numeric)
-
-#' Turn ENIGH numeric variables into numeric class
-#'
-#' @inheritParams handle_dichotomic
-#'
-#' @return An ENIGH data set with numeric classes
-#' @export
-handle_numeric <- function(data) {
-  data |>
-    dplyr::mutate(dplyr::across(
-      tidyselect::where( ~ is_numeric_quiet(.x) |> pluck("result")) &
-        !tidyselect::matches("folio|numren|_hog|_id"),
-      as.numeric
-    ))
-
-}
 
 #' Does a vector contain alphabetic characters?
 #'
